@@ -1,5 +1,6 @@
 header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #121212;
@@ -41,4 +42,17 @@ header {
 
 .menu a:hover {
     color: #ffbb00;
+}
+
+@media (min-width: 992px) {
+    header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #121212;
+    color: #ff0000;
+    padding: 10px 20px;
+    height: 100px;
+    }
 }
