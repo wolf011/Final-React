@@ -1,12 +1,12 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
-export default function Login() {
+export default function Home () {
   return (
     <div>
-      <Header />
-      <h1>Página de login</h1>
-      <Footer />
+      <Header/>
+          <h1>Home</h1>
+      <Footer/>
     </div>
   )
 }
