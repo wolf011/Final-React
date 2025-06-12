@@ -1,7 +1,12 @@
-export default function Error() {
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
+export default function Error () {
   return (
     <div>
-        <h1>404 - Error, page not found</h1>
+      <Header/>
+        <h1>404 - Error: page not found</h1>
+      <Footer/>
     </div>
   )
 }
