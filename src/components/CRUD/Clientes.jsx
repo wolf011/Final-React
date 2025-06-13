@@ -1,72 +1,94 @@
-import axios from "axios"
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function CadastroCliente() {
-    // const [cliente, setCliente] = useState("");
-    const [nome, setNome] = useState("");
-    const [telefone, setTelefone] = useState("");
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [cpf, setCpf] = useState("");
-    const [complemento, setComplemento] = useState("");
-    const [cep, setCep] = useState("");
+const validationPost = yup.object().shape({
+  titulo: yup
+    .string()
+    .required("O título tem que ser preenchido")
+    .max(40, "Tamanho máximo permitido"),
+  descricao: yup
+    .string()
+    .required("A descrição tem que ser preenchida")
+    .max(150, "Tamanho máximo permitido"),
+  conteudo: yup
+    .string()
+    .required("O conteúdo tem que ser preenchido")
+    .max(500, "Tamanho máximo permitido"),
+});
 
+export default function Posts() {
+  let navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(validationPost) });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const addPost = (data) =>
+    axios
+      .post("http://localhost:8080/clientes/inserir", data)
+      .then(() => {
+        console.log("Cadastro realizado");
+        navigate("/");
+      })
+      .catch(() => console.error("Cadastro falhou"));
 
-        const newPost = {
-            nome: nome,
-            telefone: telefone,
-            email: email,
-            cpf: cpf,
-            senha: senha,
-            complemento: complemento,
-            cep: cep
-        }
+  return (
+    <div>
+      <main>
+        <div className={styles.cardPost}>
+          <h1>Cadastre-se</h1>
+          <hr />
+          <div className={styles.cardBodyPost}>
+            <form onSubmit={handleSubmit(addPost)}>
+              <div className={styles.fields}>
+                <label htmlFor="titulo">Título</label>
+                <input
+                  type="text"
+                  id="titulo"
+                  name="titulo"
+                  {...register("titulo")}
+                />
+                <p className={styles.errorMessage}>{errors.titulo?.message}</p>
+              </div>
 
-        axios.post("http://localhost:8080/clientes/inserir", newPost)
-            .then(() => console.log("Cliente cadastrado com sucesso!"))
-            .catch(() => console.error("Erro ao inserir cliente"));
-    }
+              <div className={styles.fields}>
+                <label htmlFor="descricao">Descrição</label>
+                <input
+                  type="text"
+                  id="descricao"
+                  name="descricao"
+                  {...register("descricao")}
+                />
+                <p className={styles.errorMessage}>
+                  {errors.descricao?.message}
+                </p>
+              </div>
 
-    return (
-        <div className="container">
-            <h2>Cadastre-se</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <div className="col-md-6">
-                        <label htmlFor="nome">Nome: </label>
-                        <input type="text" id="nome" className="my-3 form-control" value={nome} onChange={(e) => setNome(e.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="telefone">Telefone: </label>
-                        <input type="tel" id="telefone" className="my-3 form-control" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="email">Email: </label>
-                        <input type="text" id="email" className="my-3 form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="email">Cpf: </label>
-                        <input type="text" id="cpf" className="my-3 form-control" value={cpf} onChange={(e) => setCpf(e.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="cep">CEP: </label>
-                        <input type="text" id="cep" className="my-3 form-control" value={cep} onChange={(e) => setCep(e.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="complemento">Complemento: </label>
-                        <input type="text" id="complemento" className="my-3 form-control" value={complemento} onChange={(e) => setComplemento(e.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="senha">Senha: </label>
-                        <input type="password" id="senha" className="my-3 form-control" value={senha} onChange={(e) => setSenha(e.target.value)} />
-                    </div>
-                </div>
-                <button className="btn btn-primary" type="submit">Enviar</button>
+              <div className={styles.fields}>
+                <label htmlFor="conteudo">Conteúdo</label>
+                <textarea
+                  cols={30}
+                  rows={10}
+                  type="text"
+                  id="conteudo"
+                  name="conteudo"
+                  {...register("conteudo")}
+                />
+                <p className={styles.errorMessage}>
+                  {errors.conteudo?.message}
+                </p>
+              </div>
+              <div className={styles.btnPost}>
+                <button type="submit">Enviar</button>
+              </div>
             </form>
+          </div>
         </div>
-
-    )
+      </main>
+    </div>
+  );
 }

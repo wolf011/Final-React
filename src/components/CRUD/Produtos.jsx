@@ -21,7 +21,13 @@ export default function GetProdutos() {
             <ul className="list-group">
                 {
                     produtos.map((produto) => (
-                        <li key={produto.id} className="list-group-item">Jogo: {produto.nome} <br/> Valor: R$ {produto.valor} <br/>Categoria: {produto.categoria} <br/>Plataforma: {produto.plataforma} <br/></li>
+                        <li key={produto.id} className="list-group-item">
+                            Jogo: {produto.nome} <br/> 
+                            Valor: R$ {produto.valor} <br/>
+                            Categoria: {produto.categoria} <br/>
+                            Plataforma: {produto.plataforma} <br/>
+                            <img src={produto.url} alt="imagens-capa"/> <br/>
+                        </li>
                     ))
                 }
             </ul>
