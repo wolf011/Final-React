@@ -19,8 +19,7 @@ const MainContent = () => {
 
   return (
     <div className={darkMode ? "app dark" : "app light"}>
-      <header>
-        <h1>{darkMode ? "Modo Escuro" : "Modo Claro"}</h1>
+      <header className="header">
         <ThemeToggle />
       </header>
 
