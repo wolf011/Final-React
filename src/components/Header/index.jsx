@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import styles from "./Header.module.css";
+import GetProdutosPorNome from "../Pesquisa/ProdutoPorNome";
 
 export default function Header() {
     return (
@@ -30,7 +31,7 @@ export default function Header() {
                         </li>
 
                         <li>
-                            <Link to="/inserirProdutos">Produtos</Link>
+                            <Link to="/Produtos">Produtos</Link>
                         </li>
                     </ul>
                 </nav>

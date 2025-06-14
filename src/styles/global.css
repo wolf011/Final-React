@@ -6,6 +6,10 @@
 
 body {
     height: 100vh;
-    background-color: gray;
+    /* background-color: bisque; */
+    background-image: url("..\assets\fundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 100%;
 }
