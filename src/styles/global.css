@@ -6,10 +6,20 @@
 
 body {
     height: 100vh;
-    /* background-color: bisque; */
-    background-image: url("..\assets\fundo.png");
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark {
+    /* background-image: url("..\assets\fundo.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
+    background-position: center; */
+  background-color: #000;
+  color: #f5f5f5;
 }
