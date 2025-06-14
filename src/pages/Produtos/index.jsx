@@ -1,11 +1,12 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import GetProdutos from "../../components/CRUD/Produtos";
 
 export default function CadastroProdutos() {
   return (
     <div>
       <Header />
-      <h1>Cadastro de Produtos</h1>
+      <GetProdutos/>
       <Footer />
     </div>
   )

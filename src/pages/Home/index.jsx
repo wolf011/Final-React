@@ -1,15 +1,14 @@
-import GetProdutos from "../../components/CRUD/Produtos";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import "./Home.module.css"
+import * as styles from "./Home.module.css";
 
-export default function Home () {
+export default function Home() {
   return (
-    <div>
+    <div clasName={styles.conteudo}>
       <Header/>
-          <h1>Home</h1>
-          <GetProdutos/>
-      <Footer/>
+      <h1>Home</h1>
+      
+      <Footer />
     </div>
   )
 }
