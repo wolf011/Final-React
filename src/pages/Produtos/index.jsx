@@ -21,6 +21,17 @@ export default function GetProdutos() {
       .catch(() => console.error("Erro ao buscar produtos"));
   }, []);
 
+  function deletePost(id) {
+    axios.delete(`http://localhost:8080/produtos/deletar/${id}`)
+      .then(() => {
+        console.log("Apagado");
+        setProdutos(produtos.filter((prod) => prod.id !== id))
+      })
+      .catch(() => {
+        console.error("Não encontrado");
+      })
+  }
+
   return (
     <div>
       <Header />
@@ -54,11 +65,14 @@ export default function GetProdutos() {
                 </CardContent>
                 <CardActions>
                   <Link to={'/'}>
-                  <Button size="small">Home</Button>
-                </Link>
-                <Link to={'/carrinho'}>
-                  <Button size="small">Comprar</Button>
-                </Link>
+                    <Button size="small">Home</Button>
+                  </Link>
+                  <div>
+                    <Button onClick={() => deletePost(produto.id)}>Apagar</Button>
+                  </div>
+                  <Link to={'/carrinho'}>
+                    <Button size="small">Comprar</Button>
+                  </Link>
                 </CardActions>
               </Card>
             </Grid>
