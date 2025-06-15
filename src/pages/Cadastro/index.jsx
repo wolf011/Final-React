@@ -91,7 +91,7 @@ export default function Cadastro() {
                   
                   />
                   <p className={styles.errorMessage}>
-                    {errors.descricao?.message}
+                    {errors.email?.message}
                   </p>
             
                   <label htmlFor="senha"></label>
@@ -104,7 +104,7 @@ export default function Cadastro() {
                     {...register("senha")}
                   />
                   <p className={styles.errorMessage}>
-                    {errors.descricao?.message}
+                    {errors.senha?.message}
                   </p>
             
               </div>
@@ -127,7 +127,7 @@ export default function Cadastro() {
                     name="nome"
                     {...register("nome")}
                   />
-                  <p className={styles.errorMessage}>{errors.titulo?.message}</p>
+                  <p className={styles.errorMessage}>{errors.nome?.message}</p>
                 
                 
                 
@@ -143,11 +143,9 @@ export default function Cadastro() {
                       {...register("cpf")}
                     />
                     <p className={styles.errorMessage}>
-                      {errors.descricao?.message}
+                      {errors.cpf?.message}
                     </p>
-                    <p className={styles.errorMessage}>
-                      {errors.descricao?.message}
-                    </p>
+                    
                   
                     
                     <label htmlFor="telefone"></label>
@@ -158,7 +156,10 @@ export default function Cadastro() {
                       id="telefone"
                       name="telefone"
                       {...register("telefone")}
-                      />
+                  />
+                  <p className={styles.errorMessage}>
+                      {errors.telefone?.message}
+                    </p>
                   <div/>
 
                 </div>  
@@ -184,7 +185,7 @@ export default function Cadastro() {
                   />
                 
                   <p className={styles.errorMessage}>
-                    {errors.descricao?.message}
+                    {errors.cep?.message}
                   </p>
                 
                 
@@ -201,7 +202,7 @@ export default function Cadastro() {
                   />
                 
                   <p className={styles.errorMessage}>
-                    {errors.conteudo?.message}
+                    {errors.complemento?.message}
                   </p>
                 
               </div>
