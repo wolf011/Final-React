@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import styles from "./Header.module.css";
 import { useTheme } from "../../contexts/ThemeContext";
-import GetProdutosPorNome from "../Pesquisa/ProdutoPorNome";
+import GetProdutosPorNome from "../../pages/Produtos/Pesquisa";
 // import { GrActions } from "react-icons/gr";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function Header() {
 
@@ -24,10 +25,6 @@ export default function Header() {
             <img src={logo}/>
             <h2>Dragon Store </h2>
             </div>
-
-            {/* <div>
-                <GetProdutosPorNome/>
-            </div> */}
 
             <div>
                 <ThemeToggle/>
@@ -54,6 +51,14 @@ export default function Header() {
 
                         <li>
                             <Link to="/Produtos">Produtos</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/Produtos/Pesquisa"><img src={FaMagnifyingGlass} /></Link>
+                        </li>
+
+                        <li>
+                            <Link to="/Produtos/Inserir">Inserir</Link>
                         </li>
                     </ul>
                 </nav>
