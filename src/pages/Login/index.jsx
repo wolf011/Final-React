@@ -30,6 +30,7 @@ export default function Login() {
       .then((response) => {
         setToken(response.data);
         localStorage.setItem("token", response.data);
+        console.log("Logado com sucesso:", response.data);
         navigate("/Produtos");
       })
       .catch(() => console.error("Login falhou"));
@@ -70,7 +71,7 @@ export default function Login() {
             </Box>
 
             <Box className="login-button">
-              <Typography variant="button">Login</Typography>
+              <button variant="button">Login</button>
             </Box>
 
             <Typography variant="body2" align="center">
