@@ -7,8 +7,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
 import * as styles from "./Login.module.css";
+
 
 const validationPost = yup.object().shape({
   username: yup.string().required("Informe o usuário (e-mail)"),
@@ -17,7 +17,6 @@ const validationPost = yup.object().shape({
 
 export default function Login() {
   const navigate = useNavigate();
-  const [token, setToken] = useState(null);
 
   const {
     register,
@@ -29,10 +28,11 @@ export default function Login() {
     axios
       .post("http://localhost:8080/autorizar/logar", data)
       .then((response) => {
-        setToken(response.data);
-        localStorage.setItem("token", response.data);
-        console.log("Logado com sucesso:", response.data);
-        navigate("/Produtos");
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("nomeUsuario", response.data.nomeUsuario);
+        localStorage.setItem("perfilId", response.data.perfilId);
+        console.log("Logado com sucesso:", response.data.nomeUsuario);
+        navigate("/Home");
       })
       .catch(() => console.error("Login falhou"));
   };

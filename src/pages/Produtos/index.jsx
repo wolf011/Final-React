@@ -16,11 +16,7 @@ export default function GetProdutos() {
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-
-    const token = localStorage.getItem('token');
-    const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
-    axios.get("http://localhost:8080/produtos/listar", { headers })
+    axios.get("http://localhost:8080/produtos/listar")
       .then((response) => setProdutos(response.data))
       .catch(() => console.error("Erro ao buscar produtos"));
   }, []);
