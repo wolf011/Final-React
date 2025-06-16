@@ -54,11 +54,8 @@ export default function Cadastro() {
 
   const addPost = (data) => {
 
-    const token = localStorage.getItem('token');
-    const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
     axios
-      .post("http://localhost:8080/clientes/inserir", data, { headers })
+      .post("http://localhost:8080/clientes/inserir", data)
       .then(() => {
         console.log("Cadastro realizado");
         navigate("/login");
