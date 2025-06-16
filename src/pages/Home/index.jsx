@@ -28,12 +28,14 @@ export default function Home() {
     <div className={styles.conteudo}>
       <h1 className="text-xl font-semibold mb-4">Bem-vindo ao Catálogo</h1>
 
-      <ScrollCarousel
-        autoplay
-        autoplaySpeed={7}
-        speed={6}
-        onReady={() => console.log("Carrossel carregado com sucesso")}
-      >
+
+    {produtos.length > 0 && (
+  <ScrollCarousel
+    autoplay
+    autoplaySpeed={7}
+    speed={6}
+    onReady={() => console.log("Carrossel carregado com sucesso")}
+  >
         {produtos.map((item) => (
           <div
             key={item.id}
@@ -48,8 +50,8 @@ export default function Home() {
           </div>
         ))}
       </ScrollCarousel>
+     )}
     </div>
-
       <Footer />
     </>
   );
