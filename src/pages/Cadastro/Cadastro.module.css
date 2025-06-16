@@ -1,23 +1,24 @@
-@media (max-width: 850px) {
+@media (max-width: 768px) {
   main {
     padding: 10px;
     flex-direction: column;  
     align-items: center;
   }
-}
 
-@media (max-width: 850px) {
   .cardPost {
     width: 90%;
     padding: 20px;
   }
-}
 
-@media (max-width: 850px) {
   .inputsRow {
     flex-direction: column;
   }
+
+  h6{
+    text-align: center;
+  }
 }
+
 
 
 main {
