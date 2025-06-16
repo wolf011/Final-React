@@ -24,9 +24,8 @@ export default function Home() {
 
   return (
     <>
-    <Header />
+     <Header />
     <div className={styles.conteudo}>
-      
       <h1 className="text-xl font-semibold mb-4">Bem-vindo ao Catálogo</h1>
 
       <ScrollCarousel
@@ -49,9 +48,8 @@ export default function Home() {
           </div>
         ))}
       </ScrollCarousel>
-
-      
     </div>
+
       <Footer />
     </>
   );
