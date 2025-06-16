@@ -76,30 +76,11 @@ header {
 
 /* Responsividade: Mobile */
 @media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        height: auto;
-        padding: 10px 15px;
-    }
-
-    .logo-container img {
-        height: 40px;
-    }
-
-    .logo-container h2 {
-        font-size: 20px;
-    }
-
-    .menuToggle {
-        display: block;
-    }
-
+    @media (max-width: 768px) {
     .menu {
         display: none;
         position: absolute;
-        top:70px;
+        top: 100px;
         right: 0;
         background-color: #333;
         width: 100%;
@@ -122,12 +103,15 @@ header {
         padding: 10px 0;
     }
 
-    .menu a {
-        font-size: 18px;
-        padding: 10px 0;
+    .menu.active ul {
+        display: flex;
     }
+    .active ul {
+    display: flex;
+}
 
-    .formHeader input {
-        max-width: 100px;
+    .menuToggle {
+        display: block;
     }
+}
 }
