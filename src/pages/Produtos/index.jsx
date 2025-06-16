@@ -76,9 +76,11 @@ export default function GetProdutos() {
                   <div>
                     {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Button onClick={() => deletePost(produto.id)}>Apagar</Button> : null}
                   </div>
+                  
                   <Link to={'/carrinho'}>
                     <Button size="small">Comprar</Button>
                   </Link>
+
                   <Link to={`/Produtos/Atualizar/${produto.nome}`}>
                     {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Button size="small">Atualizar</Button> : null}
                   </Link>
