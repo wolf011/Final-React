@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
 
+// Validação do formulário
 const validationPost = yup.object().shape({
   username: yup.string().required("Informe o usuário (e-mail)"),
   password: yup.string().required("Informe a senha"),
@@ -30,6 +31,7 @@ export default function Login() {
       .then((response) => {
         setToken(response.data);
         localStorage.setItem("token", response.data);
+        console.log("Logado com sucesso:", response.data);
         navigate("/Produtos");
       })
       .catch(() => console.error("Login falhou"));
@@ -70,7 +72,7 @@ export default function Login() {
             </Box>
 
             <Box className="login-button">
-              <Typography variant="button">Login</Typography>
+              <button variant="button">Login</button>
             </Box>
 
             <Typography variant="body2" align="center">
