@@ -15,7 +15,7 @@ export default function ThemeProvider({ children }) {
     <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
-  )
+  );
 }
 
 export const useTheme = () => useContext(ThemeContext);

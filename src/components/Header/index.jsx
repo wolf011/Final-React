@@ -2,6 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import styles from "./Header.module.css";
 import { useTheme } from "../../contexts/ThemeContext";
+import DarkModeButton from "../../contexts/DarkModeButton";
+import GetProdutosPorNome from "../../pages/Produtos/Pesquisa";
+// import { GrActions } from "react-icons/gr";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useState } from "react";
 
@@ -37,9 +40,9 @@ export default function Header() {
             <h2>Dragon Store </h2>
             </div>
 
-            <div>
-                <ThemeToggle/>
-            </div>
+            {/* <div>
+                <DarkModeButton />
+            </div> */}
 
             <form onSubmit={handleSearch} className={styles["search-form"]}>
                 <input className="input"
@@ -79,6 +82,10 @@ export default function Header() {
                         <li>
                             <Link to="/Produtos/Inserir">Inserir</Link>
                         </li>
+
+                       <li>
+                <DarkModeButton />
+            </li>
                     </ul>
                 </nav>
             </div>
