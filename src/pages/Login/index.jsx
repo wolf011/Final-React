@@ -9,7 +9,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
 
-// Validação do formulário
 const validationPost = yup.object().shape({
   username: yup.string().required("Informe o usuário (e-mail)"),
   password: yup.string().required("Informe a senha"),
