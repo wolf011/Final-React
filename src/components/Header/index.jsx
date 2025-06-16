@@ -4,7 +4,6 @@ import styles from "./Header.module.css";
 import { useTheme } from "../../contexts/ThemeContext";
 import DarkModeButton from "../../contexts/DarkModeButton";
 import GetProdutosPorNome from "../../pages/Produtos/Pesquisa";
-// import { GrActions } from "react-icons/gr";
 import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
@@ -46,9 +45,6 @@ export default function Header() {
                 <h2>Dragon Store </h2>
             </div>
 
-            {/* <div>
-                <DarkModeButton />
-            </div> */}
 
             <form onSubmit={handleSearch} className={styles.formHeader}>
                 <input className="input"
@@ -90,7 +86,7 @@ export default function Header() {
                         </li>
 
                         <li>
-                            {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Link to="/Produtos/Inserir">Inserir</Link> : null}
+                            {(localStorage.getItem('perfilId') === 1 || localStorage.getItem('perfilId') === 3) ? <Link to="/Produtos/Inserir">Inserir</Link> : null}
                         </li>
 
                         <li>

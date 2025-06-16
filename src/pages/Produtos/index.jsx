@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
+import Saudacao from '../../components/saudacao';
 
 export default function GetProdutos() {
   const [produtos, setProdutos] = useState([]);
@@ -40,6 +41,7 @@ export default function GetProdutos() {
     <div>
       <Header />
       <Box sx={{ p: 3 }}>
+      <Saudacao variant="h4" nome={localStorage.getItem("nomeUsuario")}/>
         <Typography variant="h4" gutterBottom>
           Catálogo de Produtos
         </Typography>
