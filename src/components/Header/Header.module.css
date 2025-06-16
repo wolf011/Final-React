@@ -60,17 +60,13 @@ header {
     }
 }
 
-form {
+.formHeader {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-input {
-    border-radius: 5px;
-}
-
-button {
+.buttonHeader {
     background: none;
     border: none;
     cursor: pointer

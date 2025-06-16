@@ -41,14 +41,14 @@ export default function Header() {
                 <ThemeToggle/>
             </div>
 
-            <form onSubmit={handleSearch} className={styles["search-form"]}>
+            <form onSubmit={handleSearch} className={styles.formHeader}>
                 <input className="input"
                     type="text"
                     placeholder="Buscar produto..."
                     value={inputNome}
                     onChange={(e) => setInputNome(e.target.value)}
                 />
-                <button type="submit">
+                <button type="submit" className={styles.buttonHeader}>
                 <FaMagnifyingGlass size={24} color="#ff0000" />
                 </button>
             </form>
