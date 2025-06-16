@@ -18,6 +18,7 @@ export const AppRouter = () => {
         <Route  path="/carrinho" element={<Carrinho/>}></Route>
         <Route  path="/Produtos" element={<GetProdutos/>}></Route>
         <Route  path="/Produtos/Pesquisa" element={<GetProdutosPorNome/>}></Route>
+        <Route path="/Produtos/Pesquisa/:nome" element={<GetProdutosPorNome />} />
         <Route  path="/Produtos/Inserir" element={<CadastroProdutos/>}></Route>
         <Route  path="*" element={<Error/>}></Route>
 

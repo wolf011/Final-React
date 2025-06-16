@@ -59,3 +59,22 @@ header {
     width: 100vw;
     }
 }
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+input {
+    border-radius: 5px;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer
+}
+
+
+
