@@ -36,6 +36,7 @@
   text-align: center;
   border-radius: 4px;
   cursor: pointer;
+  
 }
 
 .footer {
@@ -64,4 +65,13 @@
 .create-account {
   color: #fd0004;
   cursor: pointer;
+}
+
+.inputsRow {
+  display: flex;
+  width: 100%;        
+  gap: 4px;      
+  margin: 1px; 
+  margin-top: 10px;
+  margin-bottom: 10px; 
 }

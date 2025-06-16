@@ -7,7 +7,9 @@ import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import * as styles from "./CadastroProduto.module.css";
 import {
-  Typography, TextField
+  Typography, TextField,
+  Box,
+  Card
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
@@ -79,9 +81,16 @@ export default function CadastroProduto() {
   return (
     <div>
       <Header />
-      <main>
-        <div className={styles.cardPost}>
-          <div className={styles.cardBodyPost}>
+      <Box className="main-content" display="flex" justifyContent="center" alignItems="center"
+      sx={{
+      minHeight: "calc(100vh - 200px)", 
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 5,   
+      }}>
+        <Card variant="elevation" className="login-card" sx={{ padding: 2, boxShadow: 3 }}>
+          <Box p={2} component="form">
             <form onSubmit={handleSubmit(addPost)}>
 
               <Typography variant="h4" align="center">
@@ -98,6 +107,16 @@ export default function CadastroProduto() {
                   variant="outlined"
                   type="text"
                   {...register("nome")}
+                  sx={{
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
                 />
                 <p className={styles.errorMessage}>{errors.nome?.message}</p>
               </div>
@@ -109,6 +128,16 @@ export default function CadastroProduto() {
                   variant="outlined"
                   type="number"
                   {...register("valor")}
+                  sx={{
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
                 />
                 <p className={styles.errorMessage}>{errors.valor?.message}</p>
               </div>
@@ -120,6 +149,16 @@ export default function CadastroProduto() {
                   label="Categoria"
                   variant="outlined"
                   {...register("categoria")}
+                  sx={{
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
                 >
                   {categorias.map((cat) => (
                     <MenuItem key={cat.id} value={cat.id}>
@@ -137,6 +176,16 @@ export default function CadastroProduto() {
                   variant="outlined"
                   type="text"
                   {...register("plataforma")}
+                  sx={{
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
                 />
                 <p className={styles.errorMessage}>{errors.plataforma?.message}</p>
               </div>
@@ -148,6 +197,16 @@ export default function CadastroProduto() {
                   variant="outlined"
                   type="url"
                   {...register("url")}
+                  sx={{
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
                 />
                 <p className={styles.errorMessage}>{errors.url?.message}</p>
               </div>
@@ -162,9 +221,9 @@ export default function CadastroProduto() {
                 </Typography>
               </div>
             </form>
-          </div>
-        </div>
-      </main>
+          </Box>
+        </Card>
+      </Box>
       <Footer />
     </div>
   );
