@@ -19,11 +19,9 @@ export default function GetProdutosPorNome() {
     const { nome } = useParams([]);
 
     const buscarProdutosPorNome = () => {
-        const token = localStorage.getItem('token');
-        const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
         setBuscou(true);
-        axios.get(`http://localhost:8080/produtos/listar/${nome}`, {headers})
+        axios.get(`http://localhost:8080/produtos/listar/${nome}`)
             .then((response) => setProdutos(response.data))
             .catch((error) => {
                 console.error("Erro ao buscar produtos:", error);
