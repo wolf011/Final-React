@@ -8,7 +8,9 @@ header {
     color: #ff0000;
     padding: 10px 20px;
     height: 100px;
-    width: 100%;
+    position: relative;
+    z-index: 1000;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .logo-container {
@@ -30,7 +32,7 @@ header {
 
 .menu ul {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -46,47 +48,86 @@ header {
     color: #ffbb00;
 }
 
-@media (min-width: 375px) {
-    header {
-    display: flex;  
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #121212;
-    color: #ff0000;
-    padding: 10px 20px;
-    height: 100px;
-    width: 100vw;
-    }
-}
-
-form {
+.formHeader {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-input {
-    border-radius: 5px;
-}
 
-button {
+
+.buttonHeader {
     background: none;
     border: none;
-    cursor: pointer
+    cursor: pointer;
 }
 
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Botão hamburguer escondido no desktop */
+.menuToggle {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 28px;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1001;
 }
 
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    height: auto;}
-  }
+/* Responsividade: Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding: 10px 15px;
+    }
 
+    .logo-container img {
+        height: 40px;
+    }
+
+    .logo-container h2 {
+        font-size: 20px;
+    }
+
+    .menuToggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top:70px;
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        z-index: 999;
+        text-align: center;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .menu a {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    .formHeader input {
+        max-width: 100px;
+    }
+}

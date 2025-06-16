@@ -5,12 +5,14 @@ import { useTheme } from "../../contexts/ThemeContext";
 import DarkModeButton from "../../contexts/DarkModeButton";
 import GetProdutosPorNome from "../../pages/Produtos/Pesquisa";
 // import { GrActions } from "react-icons/gr";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 export default function Header() {
 
     const [inputNome, setInputNome] = useState("");
+    const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleSearch = (e) => {
@@ -18,6 +20,10 @@ export default function Header() {
         if (inputNome.trim() !== "") {
             navigate(`/Produtos/Pesquisa/${inputNome}`);
         }
+    };
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
     };
 
     
@@ -44,22 +50,26 @@ export default function Header() {
                 <DarkModeButton />
             </div> */}
 
-            <form onSubmit={handleSearch} className={styles["search-form"]}>
+            <form onSubmit={handleSearch} className={styles.formHeader}>
                 <input className="input"
                     type="text"
                     placeholder="Buscar produto..."
                     value={inputNome}
                     onChange={(e) => setInputNome(e.target.value)}
                 />
-                <button type="submit">
+                <button type="submit" className={styles.buttonHeader}>
                 <FaMagnifyingGlass size={24} color="#ff0000" />
                 </button>
             </form>
 
-            <div className={styles["menu"]}>
+            <div className={styles.menuToggle} onClick={toggleMenu}>
+                {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </div>
+
+            <nav className={`${styles.menu} ${menuOpen ? styles.active : ""}`}>
                 <nav>
                     <ul>
-                        <li>
+                        <li className={styles.link}>
                             <Link to="/">Home</Link>
                         </li>
 
@@ -84,11 +94,11 @@ export default function Header() {
                         </li>
 
                        <li>
-                <DarkModeButton />
+                            <DarkModeButton />
             </li>
                     </ul>
                 </nav>
-            </div>
+            </nav>
         </header>
     )
 }
