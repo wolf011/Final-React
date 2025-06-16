@@ -37,12 +37,12 @@ const validationPost = yup.object().shape({
 });
 
 
-export default function CadastroProduto() {
+export default function UpdateProduto() {
   const { nome} = useParams();
   let navigate = useNavigate();
   const [categorias, setCategorias] = useState([]);
   const [id, setId] = useState(null);
-
+  
   const {
     register,
     handleSubmit,
@@ -51,18 +51,25 @@ export default function CadastroProduto() {
   } = useForm({ resolver: yupResolver(validationPost) });
 
   useEffect(() => {
-    axios.get("http://localhost:8080/categorias/listar")
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}`} : {};
+
+    axios.get("http://localhost:8080/categorias/listar", {headers})
       .then((res) => { setCategorias(res.data) });
   }, []);
 
   useEffect(() => {
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}`} : {};
+
     axios
-      .get(`http://localhost:8080/produtos/listar/${nome}`)
+      .get(`http://localhost:8080/produtos/listar/${nome}`, {headers})
       .then((response) => {
         if (response.data.length > 0) {
           reset(response.data[0]);
           setId(response.data[0].id);
-          console.log("ID do produto:", id);
         } else {
           console.warn("Nenhum produto encontrado com esse nome");
         }
@@ -72,7 +79,7 @@ export default function CadastroProduto() {
       });
   }, []);
 
-  const addPost = (data) => {
+  const alterar = (data) => {
     const { id, ...resto } = data;
     const dadosProd = {
       ...resto,
@@ -80,9 +87,12 @@ export default function CadastroProduto() {
         id: parseInt(data.categoria),
       },
     };
-
+  
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}`} : {};
+ 
     axios
-      .put(`http://localhost:8080/produtos/atualizar/${id}`, dadosProd)
+      .put(`http://localhost:8080/produtos/atualizar/${id}`, dadosProd, {headers})
       .then(() => {
         console.log("Atualização realizada");
         navigate("/Produtos");
@@ -97,7 +107,7 @@ export default function CadastroProduto() {
       <main>
         <div className={styles.cardPost}>
           <div className={styles.cardBodyPost}>
-            <form onSubmit={handleSubmit(addPost)}>
+            <form onSubmit={handleSubmit(alterar)}>
 
               <Typography variant="h4" align="center">
                 Alterar Produto

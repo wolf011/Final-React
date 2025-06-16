@@ -48,7 +48,11 @@ export default function CadastroProduto() {
   } = useForm({ resolver: yupResolver(validationPost) });
 
   useEffect(() => {
-    axios.get("http://localhost:8080/categorias/listar")
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    axios.get("http://localhost:8080/categorias/listar", {headers})
       .then((res) => { setCategorias(res.data) });
   }, []);
 
@@ -60,8 +64,11 @@ export default function CadastroProduto() {
       },
     };
 
+      const token = localStorage.getItem('token');
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
     axios
-      .post("http://localhost:8080/produtos/inserir", dadosProd)
+      .post("http://localhost:8080/produtos/inserir", dadosProd, {headers})
       .then(() => {
         console.log("Cadastro realizado");
         navigate("/Produtos");

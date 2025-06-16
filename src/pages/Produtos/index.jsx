@@ -16,13 +16,21 @@ export default function GetProdutos() {
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/produtos/listar")
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    axios.get("http://localhost:8080/produtos/listar", { headers })
       .then((response) => setProdutos(response.data))
       .catch(() => console.error("Erro ao buscar produtos"));
   }, []);
 
   function deletePost(id) {
-    axios.delete(`http://localhost:8080/produtos/deletar/${id}`)
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    axios.delete(`http://localhost:8080/produtos/deletar/${id}`, { headers })
       .then(() => {
         console.log("Apagado");
         setProdutos(produtos.filter((prod) => prod.id !== id))

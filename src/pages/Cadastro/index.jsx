@@ -51,14 +51,19 @@ export default function Cadastro() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(validationPost) });
 
-  const addPost = (data) =>
+  const addPost = (data) => {
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}`} : {};
+
     axios
-      .post("http://localhost:8080/clientes/inserir", data)
+      .post("http://localhost:8080/clientes/inserir", data, {headers})
       .then(() => {
         console.log("Cadastro realizado");
         navigate("/login");
       })
       .catch(() => console.error("Cadastro falhou"));
+    }
 
 
   return (

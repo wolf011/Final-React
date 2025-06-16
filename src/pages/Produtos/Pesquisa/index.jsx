@@ -15,13 +15,15 @@ import { Box } from "@mui/material";
 
 export default function GetProdutosPorNome() {
     const [produtos, setProdutos] = useState([]);
-    {/*const [nome, setNome] = useState("");*/ }
     const [buscou, setBuscou] = useState(false);
     const { nome } = useParams([]);
 
     const buscarProdutosPorNome = () => {
+        const token = localStorage.getItem('token');
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
         setBuscou(true);
-        axios.get(`http://localhost:8080/produtos/listar/${nome}`)
+        axios.get(`http://localhost:8080/produtos/listar/${nome}`, {headers})
             .then((response) => setProdutos(response.data))
             .catch((error) => {
                 console.error("Erro ao buscar produtos:", error);
@@ -36,7 +38,11 @@ export default function GetProdutosPorNome() {
     }, [nome]);
 
     function deletePost(id) {
-        axios.delete(`http://localhost:8080/produtos/deletar/${id}`)
+
+        const token = localStorage.getItem('token');
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+        axios.delete(`http://localhost:8080/produtos/deletar/${id}`, {headers})
             .then(() => {
                 console.log("Apagado");
                 setProdutos(produtos.filter((prod) => prod.id !== id))
@@ -79,27 +85,27 @@ export default function GetProdutosPorNome() {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Link to={'/'}>
-                                        <Button size="small">Home</Button>
-                                    </Link>
                                     <div>
                                         <Button onClick={() => deletePost(produto.id)}>Apagar</Button>
                                     </div>
                                     <Link to={'/carrinho'}>
                                         <Button size="small">Comprar</Button>
                                     </Link>
+                                    <Link to={`/Produtos/Atualizar/${produto.nome}`}>
+                                        <Button size="small">Atualizar</Button>
+                                    </Link>
                                 </CardActions>
                             </Card>
                         </Grid>
                     )) : (
                         buscou && <div className={styles.item}>
-                                <h3>Nenhum produto encontrado :( </h3>
-                                <p>Abaixo algumas dicas para encontrar o que precisa:</p>
-                                <div className={styles.item2}>
-                                    <li>Confira se os termos digitados estão corretos</li>
-                                    <li>Utilize menos palavras, ou palavras genéricas</li>
-                                    <li>Você pode pesquisar coisas como: títulos de jogos, títulos de franquias, títulos de DLC.</li>
-                                </div>
+                            <h3>Nenhum produto encontrado :( </h3>
+                            <p>Abaixo algumas dicas para encontrar o que precisa:</p>
+                            <div className={styles.item2}>
+                                <li>Confira se os termos digitados estão corretos</li>
+                                <li>Utilize menos palavras, ou palavras genéricas</li>
+                                <li>Você pode pesquisar coisas como: títulos de jogos, títulos de franquias, títulos de DLC.</li>
+                            </div>
                         </div>
                     )
                     }
