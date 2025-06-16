@@ -26,24 +26,24 @@ export default function Header() {
         setMenuOpen(!menuOpen);
     };
 
-    
+
     const ThemeToggle = () => {
-      const { darkMode, toggleTheme } = useTheme();
-    
-      return (
-        <button className="theme-toggle-button" onClick={toggleTheme}>
-          {darkMode ? "Modo Claro" : "Modo Escuro"}
-        </button>
-      );
+        const { darkMode, toggleTheme } = useTheme();
+
+        return (
+            <button className="theme-toggle-button" onClick={toggleTheme}>
+                {darkMode ? "Modo Claro" : "Modo Escuro"}
+            </button>
+        );
     };
 
-    
+
 
     return (
         <header>
             <div className={styles["logo-container"]}>
-            <img src={logo}/>
-            <h2>Dragon Store </h2>
+                <img src={logo} />
+                <h2>Dragon Store </h2>
             </div>
 
             {/* <div>
@@ -58,7 +58,7 @@ export default function Header() {
                     onChange={(e) => setInputNome(e.target.value)}
                 />
                 <button type="submit" className={styles.buttonHeader}>
-                <FaMagnifyingGlass size={24} color="#ff0000" />
+                    <FaMagnifyingGlass size={24} color="#ff0000" />
                 </button>
             </form>
 
@@ -90,12 +90,12 @@ export default function Header() {
                         </li>
 
                         <li>
-                            <Link to="/Produtos/Inserir">Inserir</Link>
+                            {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Link to="/Produtos/Inserir">Inserir</Link> : null}
                         </li>
 
-                       <li>
+                        <li>
                             <DarkModeButton />
-            </li>
+                        </li>
                     </ul>
                 </nav>
             </nav>

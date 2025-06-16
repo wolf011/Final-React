@@ -40,7 +40,7 @@ export default function GetProdutosPorNome() {
         const token = localStorage.getItem('token');
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-        axios.delete(`http://localhost:8080/produtos/deletar/${id}`, {headers})
+        axios.delete(`http://localhost:8080/produtos/deletar/${id}`, { headers })
             .then(() => {
                 console.log("Apagado");
                 setProdutos(produtos.filter((prod) => prod.id !== id))
@@ -84,13 +84,13 @@ export default function GetProdutosPorNome() {
                                 </CardContent>
                                 <CardActions>
                                     <div>
-                                        <Button onClick={() => deletePost(produto.id)}>Apagar</Button>
+                                        {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Button onClick={() => deletePost(produto.id)}>Apagar</Button> : null}
                                     </div>
                                     <Link to={'/carrinho'}>
                                         <Button size="small">Comprar</Button>
                                     </Link>
                                     <Link to={`/Produtos/Atualizar/${produto.nome}`}>
-                                        <Button size="small">Atualizar</Button>
+                                        {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Button size="small">Atualizar</Button> : null}
                                     </Link>
                                 </CardActions>
                             </Card>

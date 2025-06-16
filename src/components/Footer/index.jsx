@@ -8,10 +8,7 @@ export default function Footer() {
       <nav>
         <ul>
           <li>
-            <Link to="/home">Games</Link>
-          </li>
-          <li>
-            <Link to="/home">Contato(Provisório)</Link>
+            <Link to="https://github.com/wolf011/Final-React">Sobre nós</Link>
           </li>
           <li>
             <Link to="https://discord.com/">Discord</Link>

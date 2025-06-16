@@ -46,12 +46,12 @@ export default function GetProdutos() {
         <Grid container spacing={3} justifyContent="center">
           {produtos.map((produto) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={produto.id}>
-              <Card  sx={(theme) => ({
-    maxWidth: 345,
-    margin: "auto",
-    backgroundColor: theme.palette.mode === "dark" ? "#1e1e1e" : "#ffffff",
-    boxShadow: theme.palette.mode === "dark" ? "0 0 10px #000" : "0 0 10px #ccc",
-  })}>
+              <Card sx={(theme) => ({
+                maxWidth: 345,
+                margin: "auto",
+                backgroundColor: theme.palette.mode === "dark" ? "#1e1e1e" : "#ffffff",
+                boxShadow: theme.palette.mode === "dark" ? "0 0 10px #000" : "0 0 10px #ccc",
+              })}>
                 <CardMedia
                   component="img"
                   height="140"
@@ -74,13 +74,13 @@ export default function GetProdutos() {
                 </CardContent>
                 <CardActions>
                   <div>
-                    <Button onClick={() => deletePost(produto.id)}>Apagar</Button>
+                    {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Button onClick={() => deletePost(produto.id)}>Apagar</Button> : null}
                   </div>
                   <Link to={'/carrinho'}>
                     <Button size="small">Comprar</Button>
                   </Link>
                   <Link to={`/Produtos/Atualizar/${produto.nome}`}>
-                    <Button size="small">Atualizar</Button>
+                    {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Button size="small">Atualizar</Button> : null}
                   </Link>
                 </CardActions>
               </Card>
