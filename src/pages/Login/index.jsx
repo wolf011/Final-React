@@ -32,7 +32,7 @@ export default function Login() {
         localStorage.setItem("nomeUsuario", response.data.nomeUsuario);
         localStorage.setItem("perfilId", response.data.perfilId);
         console.log("Logado com sucesso:", response.data.nomeUsuario);
-        navigate("/Home");
+        navigate("/");
       })
       .catch(() => console.error("Login falhou"));
   };

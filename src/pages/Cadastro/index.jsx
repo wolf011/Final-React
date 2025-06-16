@@ -83,160 +83,101 @@ export default function Cadastro() {
           <Typography variant="h4" align="center">
             Cadastro
           </Typography>
-          <Box p={2} component="form">
-            <form onSubmit={handleSubmit(addPost)}>
+          <Box p={2} component="form" onSubmit={handleSubmit(addPost)}>
+            <hr />
+            <Typography variant="h6">Dados para acesso</Typography>
+            <div className={styles.inputsRow}>
 
-              <hr />
-              <Typography variant="h6">Dados para acesso</Typography>
-              <div className={styles.inputsRow}>
+              <label htmlFor="email"></label>
+              <TextField fullWidth
+                label="Email"
+                variant="outlined"
+                type="email"
+                id="email"
+                name="email"
+                {...register("email")}
+                sx={{
+                  input: { color: "#e0e0e0" }, // Cor do texto digitado
+                  "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                  "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                    "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                    "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                  },
+                }}
 
-                <label htmlFor="email"></label>
-                <TextField fullWidth
-                  label="Email"
-                  variant="outlined"
-                  type="email"
-                  id="email"
-                  name="email"
-                  {...register("email")}
-                  sx={{
-                    input: { color: "#e0e0e0" }, // Cor do texto digitado
-                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
-                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
-                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
-                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
-                    },
-                  }}
+              />
+              <p className={styles.errorMessage}>
+                {errors.email?.message}
+              </p>
 
-                />
-                <p className={styles.errorMessage}>
-                  {errors.email?.message}
-                </p>
+              <label htmlFor="senha"></label>
+              <TextField fullWidth
+                label="Senha"
+                variant="outlined"
+                type="password"
+                id="senha"
+                name="senha"
+                {...register("senha")}
+                sx={{
+                  input: { color: "#e0e0e0" }, // Cor do texto digitado
+                  "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                  "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                    "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                    "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                  },
+                }}
+              />
+              <p className={styles.errorMessage}>
+                {errors.senha?.message}
+              </p>
 
-                <label htmlFor="senha"></label>
-                <TextField fullWidth
-                  label="Senha"
-                  variant="outlined"
-                  type="password"
-                  id="senha"
-                  name="senha"
-                  {...register("senha")}
-                  sx={{
-                    input: { color: "#e0e0e0" }, // Cor do texto digitado
-                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
-                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
-                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
-                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
-                    },
-                  }}
-                />
-                <p className={styles.errorMessage}>
-                  {errors.senha?.message}
-                </p>
-
-              </div>
+            </div>
 
 
-              <Typography variant="h6">Dados Pessoais</Typography>
+            <Typography variant="h6">Dados Pessoais</Typography>
 
-              <hr />
-
-
-              <div className={styles.dadosPessoais}>
-
-                <label htmlFor="nome"></label>
-                <TextField fullWidth
-                  label="Nome Completo"
-                  variant="outlined"
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  {...register("nome")}
-                  sx={{
-                    input: { color: "#e0e0e0" }, // Cor do texto digitado
-                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
-                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
-                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
-                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
-                    },
-                  }}
-                />
-                <p className={styles.errorMessage}>{errors.nome?.message}</p>
+            <hr />
 
 
+            <div className={styles.dadosPessoais}>
 
-                <div className={styles.inputsRow}>
-
-                  <label htmlFor="cpf"></label>
-                  <TextField fullWidth
-                    label="CPF"
-                    variant="outlined"
-                    type="text"
-                    id="cpf"
-                    name="cpf"
-                    {...register("cpf")}
-                    sx={{
-                    input: { color: "#e0e0e0" }, // Cor do texto digitado
-                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
-                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
-                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
-                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
-                    },
-                  }}
-                  />
-                  <p className={styles.errorMessage}>
-                    {errors.cpf?.message}
-                  </p>
+              <label htmlFor="nome"></label>
+              <TextField fullWidth
+                label="Nome Completo"
+                variant="outlined"
+                type="text"
+                id="nome"
+                name="nome"
+                {...register("nome")}
+                sx={{
+                  input: { color: "#e0e0e0" }, // Cor do texto digitado
+                  "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                  "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                    "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                    "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                  },
+                }}
+              />
+              <p className={styles.errorMessage}>{errors.nome?.message}</p>
 
 
-
-                  <label htmlFor="telefone"></label>
-                  <TextField fullWidth
-                    label="Telefone"
-                    variant="outlined"
-                    type="tel"
-                    id="telefone"
-                    name="telefone"
-                    {...register("telefone")}
-                    sx={{
-                    input: { color: "#e0e0e0" }, // Cor do texto digitado
-                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
-                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
-                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
-                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
-                    },
-                  }}
-                  />
-                  <p className={styles.errorMessage}>
-                    {errors.telefone?.message}
-                  </p>
-                  <div />
-                </div>
-
-              </div>
-
-              <Typography variant="h6">Endereço</Typography>
-              <hr />
 
               <div className={styles.inputsRow}>
 
-                <label htmlFor="cep"></label>
+                <label htmlFor="cpf"></label>
                 <TextField fullWidth
-                  label="CEP"
+                  label="CPF"
                   variant="outlined"
                   type="text"
-                  id="cep"
-                  name="cep"
-                  {...register("cep")}
+                  id="cpf"
+                  name="cpf"
+                  {...register("cpf")}
                   sx={{
                     input: { color: "#e0e0e0" }, // Cor do texto digitado
                     "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
@@ -248,22 +189,20 @@ export default function Cadastro() {
                     },
                   }}
                 />
-
                 <p className={styles.errorMessage}>
-                  {errors.cep?.message}
+                  {errors.cpf?.message}
                 </p>
 
 
-                <label htmlFor="complemento"></label>
+
+                <label htmlFor="telefone"></label>
                 <TextField fullWidth
-                  label="Complemento"
+                  label="Telefone"
                   variant="outlined"
-                  cols={30}
-                  rows={2}
-                  type="text"
-                  id="complemento"
-                  name="complemento"
-                  {...register("complemento")}
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  {...register("telefone")}
                   sx={{
                     input: { color: "#e0e0e0" }, // Cor do texto digitado
                     "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
@@ -275,17 +214,75 @@ export default function Cadastro() {
                     },
                   }}
                 />
-
                 <p className={styles.errorMessage}>
-                  {errors.complemento?.message}
+                  {errors.telefone?.message}
                 </p>
-
+                <div />
               </div>
 
-              <div className={styles.button}>
-                <Typography variant="body2" align="center"><button className={styles.enviarButton} type="submit">Criar Conta</button></Typography>
-              </div>
-            </form>
+            </div>
+
+            <Typography variant="h6">Endereço</Typography>
+            <hr />
+
+            <div className={styles.inputsRow}>
+
+              <label htmlFor="cep"></label>
+              <TextField fullWidth
+                label="CEP"
+                variant="outlined"
+                type="text"
+                id="cep"
+                name="cep"
+                {...register("cep")}
+                sx={{
+                  input: { color: "#e0e0e0" }, // Cor do texto digitado
+                  "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                  "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                    "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                    "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                  },
+                }}
+              />
+
+              <p className={styles.errorMessage}>
+                {errors.cep?.message}
+              </p>
+
+
+              <label htmlFor="complemento"></label>
+              <TextField fullWidth
+                label="Complemento"
+                variant="outlined"
+                cols={30}
+                rows={2}
+                type="text"
+                id="complemento"
+                name="complemento"
+                {...register("complemento")}
+                sx={{
+                  input: { color: "#e0e0e0" }, // Cor do texto digitado
+                  "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                  "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                    "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                    "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                  },
+                }}
+              />
+
+              <p className={styles.errorMessage}>
+                {errors.complemento?.message}
+              </p>
+
+            </div>
+
+            <div className={styles.button}>
+              <Typography variant="body2" align="center"><button className={styles.enviarButton} type="submit">Criar Conta</button></Typography>
+            </div>
           </Box>
         </Card>
       </Box>
