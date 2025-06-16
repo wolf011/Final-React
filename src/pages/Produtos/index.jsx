@@ -64,14 +64,14 @@ export default function GetProdutos() {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link to={'/'}>
-                    <Button size="small">Home</Button>
-                  </Link>
                   <div>
                     <Button onClick={() => deletePost(produto.id)}>Apagar</Button>
                   </div>
                   <Link to={'/carrinho'}>
                     <Button size="small">Comprar</Button>
+                  </Link>
+                  <Link to={`/Produtos/Atualizar/${produto.nome}`}>
+                    <Button size="small">Atualizar</Button>
                   </Link>
                 </CardActions>
               </Card>

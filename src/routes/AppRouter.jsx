@@ -6,6 +6,7 @@ import Carrinho from "../pages/Carrinho";
 import GetProdutos from "../pages/Produtos";
 import CadastroProdutos from "../pages/Produtos/Inserir";
 import GetProdutosPorNome from "../pages/Produtos/Pesquisa";
+import UpdateProduto from "../pages/Produtos/Update";
 import Error from "../pages/Error";
 
 
@@ -20,6 +21,7 @@ export const AppRouter = () => {
         <Route  path="/Produtos/Pesquisa" element={<GetProdutosPorNome/>}></Route>
         <Route path="/Produtos/Pesquisa/:nome" element={<GetProdutosPorNome />} />
         <Route  path="/Produtos/Inserir" element={<CadastroProdutos/>}></Route>
+        <Route  path="/Produtos/Atualizar/:nome" element={<UpdateProduto/>}></Route>
         <Route  path="*" element={<Error/>}></Route>
 
 
