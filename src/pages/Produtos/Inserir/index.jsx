@@ -90,8 +90,7 @@ export default function CadastroProduto() {
       padding: 5,   
       }}>
         <Card variant="elevation" className="login-card" sx={{ padding: 2, boxShadow: 3 }}>
-          <Box p={2} component="form">
-            <form onSubmit={handleSubmit(addPost)}>
+          <Box p={2} component="form" onSubmit={handleSubmit(addPost)}>
 
               <Typography variant="h4" align="center">
                 Cadastro de Produtos
@@ -220,7 +219,6 @@ export default function CadastroProduto() {
                   </button>
                 </Typography>
               </div>
-            </form>
           </Box>
         </Card>
       </Box>
