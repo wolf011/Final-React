@@ -1,49 +1,66 @@
-footer{
-    padding: 10px;
-    width: 100vw;
-    height: 100px;
-    background-color: #121212;
-    color: #ff0000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    bottom: 0;
-    left: 0;
-}
-
-h2{
-    padding-left: 10px;
-}
-ul{
-    display: flex;
-    gap: 10px;
-    list-style: none;
-}
-
-footer a{
-    color: #ff0000;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-footer a:hover{
-    color: #ffbb00;
-}
-
-footer a+ a{
-    margin-left: 10px;
-}
-
 footer {
-    margin-top: 100%;
+  padding: 10px 20px;
+  width: 100%; /* Melhor que 100vw */
+  min-height: 80px; /* altura mínima */
+  background-color: #121212;
+  color: #ff0000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box; /* para garantir padding dentro da largura */
+  flex-wrap: wrap; /* permite quebra de linha se necessário */
+}
+
+h2 {
+  padding-left: 10px;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex: 1; /* ocupa espaço restante */
+}
+
+footer a {
+  color: #ff0000;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffbb00;
 }
 
 @media (max-width: 600px) {
   footer {
     flex-direction: column;
     align-items: center;
-    height: auto;}
+    text-align: center;
+    min-height: auto;
+    padding: 15px;
   }
+
+  h2 {
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex: none;
+  }
+
+  footer a {
+    font-size: 1rem;
+  }
+}
