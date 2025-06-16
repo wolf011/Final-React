@@ -50,7 +50,12 @@ export default function GetProdutos() {
         <Grid container spacing={3} justifyContent="center">
           {produtos.map((produto) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={produto.id}>
-              <Card sx={{ maxWidth: 345, margin: 'auto' }}>
+              <Card  sx={(theme) => ({
+    maxWidth: 345,
+    margin: "auto",
+    backgroundColor: theme.palette.mode === "dark" ? "#1e1e1e" : "#ffffff",
+    boxShadow: theme.palette.mode === "dark" ? "0 0 10px #000" : "0 0 10px #ccc",
+  })}>
                 <CardMedia
                   component="img"
                   height="140"
@@ -61,7 +66,7 @@ export default function GetProdutos() {
                   <Typography gutterBottom variant="h6" noWrap>
                     {produto.nome}
                   </Typography>
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" >
                     Valor: R$ {produto.valor}
                   </Typography>
                   <Typography variant="body2" color="text.primary">

@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import * as styles from "./Login.module.css";
 
 const validationPost = yup.object().shape({
   username: yup.string().required("Informe o usuário (e-mail)"),
@@ -39,40 +40,69 @@ export default function Login() {
   return (
     <div>
       <Header />
-      <Box className="main-content" display="flex" justifyContent="center" alignItems="center">
-        <Card variant="elevation" className="login-card">
+      <Box className="main-content" display="flex" justifyContent="center" alignItems="center"
+        sx={{
+          minHeight: "calc(100vh - 200px)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 2,
+        }}>
+        <Card variant="elevation" className="login-card" sx={{ padding: 2, boxShadow: 3 }}>
           <Typography variant="h4" align="center">Login</Typography>
           <Typography variant="body1" align="center">
             Faça seu login para acessar seu cadastro.
           </Typography>
 
-          <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit(logar)}>
+          <Box p={2} component="form" noValidate autoComplete="off" onSubmit={handleSubmit(logar)}>
 
-            <Box className="input-field">
-              <Typography variant="body2">Usuário (e-mail)</Typography>
-              <TextField
-                fullWidth
-                type="text"
-                {...register("username")}
-                error={!!errors.username}
-                helperText={errors.username?.message}
-              />
-            </Box>
 
-            <Box className="input-field">
-              <Typography variant="body2">Senha</Typography>
-              <TextField
-                fullWidth
-                type="password"
-                {...register("password")}
-                error={!!errors.password}
-                helperText={errors.password?.message}
-              />
-            </Box>
+            <TextField
+              label="Email"
+              fullWidth
+              type="text"
+              {...register("username")}
+              error={!!errors.username}
+              helperText={errors.username?.message}
+              sx={{
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
+            />
 
-            <Box className="login-button">
-              <button variant="button">Login</button>
-            </Box>
+
+
+            <TextField
+              label="Senha"
+              fullWidth
+              type="password"
+              {...register("password")}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+
+              sx={{
+                mt: 2,
+                    input: { color: "#e0e0e0" }, // Cor do texto digitado
+                    "& .MuiInputLabel-root": { color: "#b0b0b0" }, // Cor padrão do label
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#ff3b3f" }, // Cor do label quando focado
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#b0b0b0" }, // Cor da borda normal
+                      "&:hover fieldset": { borderColor: "#ff3b3f" }, // Borda no hover
+                      "&.Mui-focused fieldset": { borderColor: "#ff3b3f" }, // Borda quando focado
+                    },
+                  }}
+            />
+
+
+            <div className={styles.button}>
+              <Typography variant="body2" align="center"><button className={styles.loginButton} type="submit">Login</button></Typography>
+            </div>
 
             <Typography variant="body2" align="center">
               Não tem uma conta?{" "}
