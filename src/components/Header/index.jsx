@@ -86,7 +86,7 @@ export default function Header() {
                         </li>
 
                         <li>
-                            {(localStorage.getItem('perfilId') === 1 || localStorage.getItem('perfilId') === 3) ? <Link to="/Produtos/Inserir">Inserir</Link> : null}
+                            {(localStorage.getItem('perfilId') == 1 || localStorage.getItem('perfilId') == 3) ? <Link to="/Produtos/Inserir">Inserir</Link> : null}
                         </li>
 
                         <li>
