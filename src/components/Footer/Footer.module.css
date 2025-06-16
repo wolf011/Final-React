@@ -33,3 +33,17 @@ footer a:hover{
 footer a+ a{
     margin-left: 10px;
 }
+
+footer {
+    margin-top: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    height: auto;}
+  }

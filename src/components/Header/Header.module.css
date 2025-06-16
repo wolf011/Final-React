@@ -77,4 +77,16 @@ button {
 }
 
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    height: auto;}
+  }
 
